@@ -77,9 +77,9 @@ const CourseInfo = {
   ];
   
 
-// console.log(LearnerSubmissions);
-//  let ids = LearnerSubmissions[1].learner_id
-//   console.log(ids)
+console.log(LearnerSubmissions);
+ let ids = LearnerSubmissions[1].learner_id
+  console.log(ids)
 
 let ids=[]
 
@@ -97,6 +97,9 @@ let uniqueId = new Set(ids);
 let uniqueIds = [...uniqueId]
 
 console.log(uniqueIds)
+
+
+
 
 //   function getLearnerData(course, ag, submissions) {
 //     // here, we would process this data to achieve the desired result.
