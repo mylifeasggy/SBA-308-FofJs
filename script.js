@@ -75,23 +75,70 @@ const CourseInfo = {
       }
     }
   ];
-    console.log(LearnerSubmissions)
+   
+
+// 1. Generate an array of unique students ids (MAP)
+
+const uniqueStudentid = [];
+
+for (let i = 0; i < LearnerSubmissions.length; i++){
+
+        const studentid = LearnerSubmissions[i]
+         uniqueStudentid.push(studentid.learner_id)
+     
+}
+
+// console.log(uniqueStudentid)
+
+let noDuplicateId = uniqueStudentid
+
+noDuplicateId = new Set(noDuplicateId)
+
+let uniqueLearnesId = [...noDuplicateId]
+
+// console.log(uniqueLearnesId)
+
+
+const assignmentId =[];
+for(let i = 0; i <LearnerSubmissions.length; i++){
+         assignmentId.push(LearnerSubmissions[i].assignment_id)
+}
+// console.log(assignmentId)
+
+
+// console.log(studentsScore)
+
+  // 2.convert it into array of object where you have a key called id
+
+let ids= [];
+for (let i = 0; i < uniqueLearnesId.length; i++) {        //Because of the length of UniqueLearners
+   const object = {
+
+              id:   uniqueLearnesId[i]
+}
+                ids.push (object);
+}
+            console.log(ids)
 
 
 
+ //3. get the assignments and calulcate the grade
+  // find the assignment for each student and thier score
+  // let submissionScore = LearnerSubmissions[i].submission.score
+
+  // console.log(submissionScore)
+
+  ids[0]['1'] = LearnerSubmissions[0].submission.score/ AssignmentGroup.assignments[0].points_possible
+  ids[0]['2'] = LearnerSubmissions[1].submission.score/AssignmentGroup.assignments[1].points_possible
+  ids[0]['3'] = LearnerSubmissions[2].submission.score/AssignmentGroup.assignments[2].points_possible
+  ids[1]['1'] = LearnerSubmissions[3].submission.score/AssignmentGroup.assignments[0].points_possible
+  ids[1]['2'] = LearnerSubmissions[4].submission.score/AssignmentGroup.assignments[1].points_possible -0.10
+  
+ 
+  // console.log(ids)
 
 
 
-
-
-
-
-
-
-
-
-
-    
 //   function getLearnerData(course, ag, submissions) {
 //     // here, we would process this data to achieve the desired result.
 //     const result = [
@@ -115,4 +162,3 @@ const CourseInfo = {
 //   const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
   
 //   console.log(result);
-  
