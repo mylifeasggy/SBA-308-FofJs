@@ -75,32 +75,23 @@ const CourseInfo = {
       }
     }
   ];
-  
-
-console.log(LearnerSubmissions);
- let ids = LearnerSubmissions[1].learner_id
-  console.log(ids)
-
-let ids=[]
-
-for (let i =0; i < LearnerSubmissions.length; i++){
-
-    ids.push(LearnerSubmissions[i].learner_id)
- 
-
-}
-
-console.log(ids)
-  
-let uniqueId = new Set(ids);
-
-let uniqueIds = [...uniqueId]
-
-console.log(uniqueIds)
+    console.log(LearnerSubmissions)
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+    
 //   function getLearnerData(course, ag, submissions) {
 //     // here, we would process this data to achieve the desired result.
 //     const result = [
