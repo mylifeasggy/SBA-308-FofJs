@@ -78,6 +78,25 @@ const CourseInfo = {
    
 
 
+getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+
+function learnerData(CourseInfo, AssignmentGroup, learnerSubmissions) {
+
+    if (AssignmentGroup.course_id !== CourseInfo.id) {
+      throw new Error("Invalid input: AssignmentGroup's course_id does not match the CourseInfo.id.")
+    }
+
+}
+
+try {
+ learnerData(CourseInfo, AssignmentGroup, learnerSubmissions)
+    console.log('Yay! Data is completed without error.')
+} catch  {
+
+    console.error(`We don't have that information`, error.message);
+  }
+
+
 
 
 
@@ -145,24 +164,6 @@ const assignmentId =[];
 for(let i = 0; i <learnerSubmissions.length; i++){
          assignmentId.push(learnerSubmissions[i].assignment_id)
 }
-
-
-function learnerData(CourseInfo, AssignmentGroup, learnerSubmissions) {
-
-    if (AssignmentGroup.course_id !== CourseInfo.id) {
-      throw new Error("Invalid input: AssignmentGroup's course_id does not match the CourseInfo.id.")
-    }
-
-
-}
-
-try {
- learnerData(CourseInfo, AssignmentGroup, learnerSubmissions)
-    console.log('Yay! Data is completed without error.')
-} catch  {
-
-    console.error(`We don't have that information`, error.message);
-  }
 
 
 
