@@ -150,6 +150,15 @@ for (let i = 0; i < uniqueLearnesId.length; i++) {        //Because of the lengt
  
   console.log(idsLearners)
 
+  for (let i = 0; i < learnerSubmissions.length; i++){
+    let sub = submission[i];
+    for (let j = i; j < i; j++){
+
+      
+    }
+
+  }
+
 
 // avg (add assignment scores together )/ (points possible)
 
