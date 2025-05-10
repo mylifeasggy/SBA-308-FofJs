@@ -159,7 +159,10 @@ function learnerData(CourseInfo, AssignmentGroup, learnerSubmissions) {
 try {
  learnerData(CourseInfo, AssignmentGroup, learnerSubmissions)
     console.log('Yay! Data is completed without error.')
-}
+} catch  {
+
+    console.error(`We don't have that information`, error.message);
+  }
 
 
 
