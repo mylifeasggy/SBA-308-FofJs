@@ -78,9 +78,9 @@ const CourseInfo = {
    
 
 
-getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+const result = getLearnerData(CourseInfo, AssignmentGroup, learnerSubmissions);
 
-function learnerData(CourseInfo, AssignmentGroup, learnerSubmissions) {
+function getLearnerData(CourseInfo, AssignmentGroup, learnerSubmissions) {
 
     if (AssignmentGroup.course_id !== CourseInfo.id) {
       throw new Error("Invalid input: AssignmentGroup's course_id does not match the CourseInfo.id.")
@@ -89,9 +89,9 @@ function learnerData(CourseInfo, AssignmentGroup, learnerSubmissions) {
 }
 
 try {
- learnerData(CourseInfo, AssignmentGroup, learnerSubmissions)
+ getLearnerData(CourseInfo, AssignmentGroup, learnerSubmissions)
     console.log('Yay! Data is completed without error.')
-} catch  {
+} catch (error){
 
     console.error(`We don't have that information`, error.message);
   }
@@ -141,38 +141,49 @@ for (let i = 0; i < uniqueLearnesId.length; i++) {        //Because of the lengt
   // find the assignment for each student and thier score
 
 
-  idsLearners[0]['1'] = learnerSubmissions[0].submission.score/ AssignmentGroup.assignments[0].points_possible
-  idsLearners[0]['2'] = learnerSubmissions[1].submission.score/AssignmentGroup.assignments[1].points_possible
-  idsLearners[0]['3'] = learnerSubmissions[2].submission.score/AssignmentGroup.assignments[2].points_possible
-  idsLearners[1]['1'] = learnerSubmissions[3].submission.score/AssignmentGroup.assignments[0].points_possible
-  idsLearners[1]['2'] = learnerSubmissions[4].submission.score/AssignmentGroup.assignments[1].points_possible
+  // idsLearners[0]['1'] = learnerSubmissions[0].submission.score/ AssignmentGroup.assignments[0].points_possible
+  // idsLearners[0]['2'] = learnerSubmissions[1].submission.score/AssignmentGroup.assignments[1].points_possible
+  // idsLearners[0]['3'] = learnerSubmissions[2].submission.score/AssignmentGroup.assignments[2].points_possible
+  // idsLearners[1]['1'] = learnerSubmissions[3].submission.score/AssignmentGroup.assignments[0].points_possible
+  // idsLearners[1]['2'] = learnerSubmissions[4].submission.score/AssignmentGroup.assignments[1].points_possible
   
  
-  console.log(idsLearners)
+  // console.log(idsLearners)
 
   for (let i = 0; i < learnerSubmissions.length; i++){
-    let sub = submission[i];
-    for (let j = i; j < i; j++){
+    let submission = submission[i];
+    const assignment_id = submission.assignment_id;
+ 
 
-      
+    let assignment=0;
+
+    for (let j = i; j < AssignmentGroup.length; j++){
+     if(AssignmentGroup[j].id === assignment_id ){
+
+      assignment += AssignmentGroup[j];
+      break;
+
+     }
+
     }
 
   }
 
+  console.log(assignment)
 
 // avg (add assignment scores together )/ (points possible)
 
-let pointPoss= AssignmentGroup.assignments[0].points_possible + AssignmentGroup.assignments[1].points_possible
-let asScore = learnerSubmissions[0].submission.score + learnerSubmissions[1].submission.score
-console.log(asScore/pointPoss)
+// let pointPoss= AssignmentGroup.assignments[0].points_possible + AssignmentGroup.assignments[1].points_possible
+// let asScore = learnerSubmissions[0].submission.score + learnerSubmissions[1].submission.score
+// console.log(asScore/pointPoss)
 
 
 
 
-const assignmentId =[];
-for(let i = 0; i <learnerSubmissions.length; i++){
-         assignmentId.push(learnerSubmissions[i].assignment_id)
-}
+// const assignmentId =[];
+// for(let i = 0; i <learnerSubmissions.length; i++){
+//          assignmentId.push(learnerSubmissions[i].assignment_id)
+// }
 
 
 
