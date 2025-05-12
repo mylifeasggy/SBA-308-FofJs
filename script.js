@@ -111,8 +111,6 @@ function getLearnerData(course, ag, submissions) {
             if (!learners[learner_id]) {
                 learners[learner_id] ={
                   id:learner_id,
-                  avg= 0,
-                  assignments: {}
                   
                 };
               }
@@ -127,7 +125,15 @@ function getLearnerData(course, ag, submissions) {
               score= score * 0.90;
             }
   
+           let percentage = score/pointsPossible;
+           learner.assignments[assignment_id] = percentage 
 
+           learner.score+=score;
+           learner.points+= pointsPossible
+           learner.avg= learner.score/learner.points
+
+}
+console.log(learners)
 
 
   // let noDuplicateId = uniqueStudentid
@@ -244,4 +250,3 @@ function getLearnerData(course, ag, submissions) {
 // const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
 //   console.log(result);
-//
