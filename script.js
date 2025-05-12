@@ -80,11 +80,14 @@ const CourseInfo = {
 
 
 function getLearnerData(course, ag, submissions) {
+     const learners = {};
+     const result = [];   
 
+
+  
     if (ag.course_id !== course.id) {
       throw new Error("AssignmentGroup's course_id does not match the CourseInfo.id.")
     }
-
 
 
 // try {
@@ -102,21 +105,32 @@ function getLearnerData(course, ag, submissions) {
 
 
 for (let i = 0; i < submissions.length; i++) {
+    
+  const submission= submissions[i]
+
   let assignment = null;
 
   for (let j = 0; ag.assignments.length; j++) {
-    if (ag.assignments[j].id === submissions.assignment_id) {
+    if (ag.assignments[j].id == submissions.assignment_id) {
       assignment = ag.assignments[j];
       break;
     }
 
-
   }
 
-}
-console.log(assignment)
+ 
+
+
+
+
+
+
+
+
+
 }
 
+}
 // let noDuplicateId = uniqueStudentid
 
 // noDuplicateId = new Set(noDuplicateId)
@@ -206,7 +220,7 @@ console.log(assignment)
 // }
 
 
-// function getLearnerData(course, ag, submissions) {
+function getLearnerData(course, ag, submissions) {
 
  
 //     // here, we would process this data to achieve the desired result.
@@ -226,7 +240,7 @@ console.log(assignment)
 //     ];
   
 //     return result;
-//   }
+  }
   
   const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
   
