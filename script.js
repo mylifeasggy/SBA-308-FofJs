@@ -127,7 +127,7 @@ function getLearnerData(course, ag, submissions) {
 
     if (new Date(sub.submitted_at) > new Date(assignment.due_at)) {
 
-      score += score * 0.90;
+      score = score * 0.90;
     } else {
 
     }
