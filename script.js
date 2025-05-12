@@ -107,41 +107,44 @@ function getLearnerData(course, ag, submissions) {
       }
 
     }
-            if (!learners[learner_id]) {
-                learners[learner_id] = {
-                  id:learner_id,
-                  avg: 0,
-                  score:0,
-                  points:0,
-                  assignments:{
 
-                  }
-                  
-                };
-              }
-             const learner = learners[learner_id];
-             const pointsPossible = assignment.points_possible;
-             let score = sub.score;// varibable for score
-             let late = new Date(sub.submitted_at) > new DataTransfer(assignment.due_at)
-             
-             
-            if(new Date(sub.submitted_at)> new Date (assignment.due_at)){
+    learners[learner_id] = {
+      id: learner_id,
+      avg: 0,
+      score: 0,
+      points: 0,
+      assignments: {
 
-              score= score * 0.90;
-            }
+      }
+
+    };
+
+    let learner = learners[learner_id];
+    const pointsPossible = assignment.points_possible;
+    let score = sub.score;// varibable for score
   
-           let percentage = score/pointsPossible;
-           learner.assignments[assignment_id] = percentage 
-
-           learner.score+=score;
-           learner.points+= pointsPossible
-           learner.avg= learner.score/learner.points
-
-          
 
 
-}
- console.log(learners);
+    if (new Date(sub.submitted_at) > new Date(assignment.due_at)) {
+
+      score += score * 0.90;
+    } else {
+
+    }
+
+    let percentage = score / pointsPossible;
+    learner.assignments[assignment_id] = percentage;
+    console.log(percentage)
+
+    learner.score += score;
+    learner.points += pointsPossible
+    learner.avg = learner.score / learner.points
+
+
+
+
+  }
+  console.log(learners);
 
   
 
