@@ -82,7 +82,8 @@ const LearnerSubmissions = [
 function getLearnerData(course, ag, submissions) {
 
   const learners = {};
-  const result = [];
+  const result =[];
+
 
 
 
@@ -107,17 +108,18 @@ function getLearnerData(course, ag, submissions) {
       }
 
     }
-
+     if(!learners[learner_id]){
     learners[learner_id] = {
       id: learner_id,
       avg: 0,
-      score: 0,
-      points: 0,
+      
       assignments: {
-
+        score:0,
+      points:0,
       }
-
+    }
     };
+
 
     let learner = learners[learner_id];
     const pointsPossible = assignment.points_possible;
@@ -128,23 +130,20 @@ function getLearnerData(course, ag, submissions) {
     if (new Date(sub.submitted_at) > new Date(assignment.due_at)) {
 
       score = score * 0.90;
-    } else {
-
     }
 
-    let percentage = score / pointsPossible;
-    learner.assignments[assignment_id] = percentage;
-    console.log(percentage)
+    const percentage = score / pointsPossible;
+    learner[assignment_id] = percentage;
+   
+    score = score;
+    let points = pointsPossible;
+    learner.avg = score/points
+     
 
-    learner.score += score;
-    learner.points += pointsPossible
-    learner.avg = learner.score / learner.points
-
-
-
-
+   
   }
   console.log(learners);
+
 
   
 
