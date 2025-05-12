@@ -81,58 +81,61 @@ const CourseInfo = {
 
 function getLearnerData(course, ag, submissions) {
 
-    if (ag.course_id !== CourseInfo.id) {
+    if (ag.course_id !== course.id) {
       throw new Error("AssignmentGroup's course_id does not match the CourseInfo.id.")
     }
 
-}
-
-try {
- getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions)
-    console.log('Yay! Data is completed without error.')
-} catch (error){
-
-    console.error(`We don't have that information`, error.message);
-  }
 
 
+// try {
+// getLearnerData(course, ag, submissions)
+//     console.log('Yay! Data is completed without error.')
 
+// } catch (error){
 
-
+//     console.error(`We don't have that information`, error.message);
+//   }
 
 
 // 1. Generate an array of unique students ids (MAP)
 
-const uniqueStudentid = [];
 
-for (let i = 0; i < LearnerSubmissions.length; i++){
 
-        const studentid = LearnerSubmissions[i]
-         uniqueStudentid.push(studentid.learner_id)
-     
+for (let i = 0; i < submissions.length; i++) {
+  let assignment = null;
+
+  for (let j = 0; ag.assignments.length; j++) {
+    if (ag.assignments[j].id === submissions.assignment_id) {
+      assignment = ag.assignments[j];
+      break;
+    }
+
+
+  }
+
+}
+console.log(assignment)
 }
 
-// console.log(uniqueStudentid)
+// let noDuplicateId = uniqueStudentid
 
-let noDuplicateId = uniqueStudentid
+// noDuplicateId = new Set(noDuplicateId)
 
-noDuplicateId = new Set(noDuplicateId)
+// let uniqueLearnesId = [...noDuplicateId]
 
-let uniqueLearnesId = [...noDuplicateId]
-
-// console.log(uniqueLearnesId)
+// // console.log(uniqueLearnesId)
 
   // 2.convert it into array of object where you have a key called id
 
-let idsLearners= [];
-for (let i = 0; i < uniqueLearnesId.length; i++) {        //Because of the length of UniqueLearners
-   const object = {
+// let idsLearners= [];
+// for (let i = 0; i < uniqueLearnesId.length; i++) {        //Because of the length of UniqueLearners
+//    const object = {
 
-              id:   uniqueLearnesId[i]
-}
-                idsLearners.push (object);
-}
-            console.log(idsLearners)
+//               id:   uniqueLearnesId[i]
+// }
+//                 idsLearners.push (object);
+// }
+//             console.log(idsLearners)
 
 
 
@@ -171,24 +174,24 @@ for (let i = 0; i < uniqueLearnesId.length; i++) {        //Because of the lengt
   // console.log(assignment)
 
 // avg (add assignment scores together )/ (points possible)
-let pointsPossible=0;
-let totalScore=0;
+// let pointsPossible=0;
+// let totalScore=0;
 
-for (i = 0; i < AssignmentGroup.length; i++){
+// for (i = 0; i < AssignmentGroup.length; i++){
 
-pointsPossible+= AssignmentGroup.assignments[i].points_possible 
+// pointsPossible+= AssignmentGroup.assignments[i].points_possible 
 
-}
-for (j = 0; j < LearnerSubmissions.length; j++){
-totalScore+=LearnerSubmissions[i].submission.score 
-}
+// }
+// for (j = 0; j < LearnerSubmissions.length; j++){
+// totalScore+=LearnerSubmissions[i].submission.score 
+// }
 
-if ( pointsPossible > 0 ){
-console.log (totalScore/pointsPossible)
+// if ( pointsPossible > 0 ){
+// console.log (totalScore/pointsPossible)
 
-}else {
-   console.log(`${pointsPossible} is zero and we can not calculate average`)
-}
+// }else {
+//    console.log(`${pointsPossible} is zero and we can not calculate average`)
+// }
 
 // let pointPoss= AssignmentGroup.assignments[0].points_possible + AssignmentGroup.assignments[1].points_possible
 // let asScore = LearnerSubmissions[0].submission.score + LearnerSubmissions[1].submission.score
@@ -203,6 +206,7 @@ console.log (totalScore/pointsPossible)
 // }
 
 
+// function getLearnerData(course, ag, submissions) {
 
  
 //     // here, we would process this data to achieve the desired result.
@@ -224,7 +228,7 @@ console.log (totalScore/pointsPossible)
 //     return result;
 //   }
   
-//   const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+  const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
   
 //   console.log(result);
 //
