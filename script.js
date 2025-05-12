@@ -118,19 +118,20 @@ for (let i = 0; i < submissions.length; i++) {
 
   }
 
- 
+ const late = new Date(submission.submitted_at) > new Date (assignment.due_at);
 
+ if (new Date(submission.submitted_at)> new Date(assignment/due_at)){
 
-
-
-
-
+       submission.score = submission.score * 0.90;
+ }
+ console.log(late)
 
 
 
 }
 
 }
+console.log(learners)
 // let noDuplicateId = uniqueStudentid
 
 // noDuplicateId = new Set(noDuplicateId)
