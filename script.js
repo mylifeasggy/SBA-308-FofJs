@@ -114,11 +114,19 @@ function getLearnerData(course, ag, submissions) {
                   avg= 0,
                   assignments: {}
                   
-                }
+                };
+              }
+             const learner = learners[learner_id];
+             const pointsPossible = assignment.points_possible;
+             let score = sub.score;// varibable for score
+             let late = new Date(sub.submitted_at) > new DataTransfer(assignment.due_at)
+             
+             
+            if(new Date(sub.submitted_at)> new Date (assignment.due_at)){
 
-
-
-  }
+              score= score * 0.90;
+            }
+  
 
 
 
