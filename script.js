@@ -112,11 +112,7 @@ function getLearnerData(course, ag, submissions) {
     learners[learner_id] = {
       id: learner_id,
       avg: 0,
-      
-      assignments: {
-        score:0,
-      points:0,
-      }
+
     }
     };
 
