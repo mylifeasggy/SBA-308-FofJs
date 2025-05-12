@@ -96,8 +96,7 @@ function getLearnerData(course, ag, submissions) {
     const learner_id = submission.learner_id;
     const assignment_id = submission.assignment_id;
     const sub = submission.submission;
-    let score_temp = 0;
-    let points_temp = 0;
+    
 
 
     let assignment = null;
@@ -109,8 +108,14 @@ function getLearnerData(course, ag, submissions) {
 
     }
             if (!learners[learner_id]) {
-                learners[learner_id] ={
+                learners[learner_id] = {
                   id:learner_id,
+                  avg: 0,
+                  score:0,
+                  points:0,
+                  assignments:{
+
+                  }
                   
                 };
               }
@@ -132,100 +137,13 @@ function getLearnerData(course, ag, submissions) {
            learner.points+= pointsPossible
            learner.avg= learner.score/learner.points
 
+          
+
+
 }
-console.log(learners)
+ console.log(learners);
 
-
-  // let noDuplicateId = uniqueStudentid
-
-  // noDuplicateId = new Set(noDuplicateId)
-
-  // let uniqueLearnesId = [...noDuplicateId]
-
-  // // console.log(uniqueLearnesId)
-
-  // 2.convert it into array of object where you have a key called id
-
-  // let idsLearners= [];
-  // for (let i = 0; i < uniqueLearnesId.length; i++) {        //Because of the length of UniqueLearners
-  //    const object = {
-
-  //               id:   uniqueLearnesId[i]
-  // }
-  //                 idsLearners.push (object);
-  // }
-  //             console.log(idsLearners)
-
-
-
-  //3. get the assignments and calulcate the grade
-  // find the assignment for each student and thier score
-
-
-  // idsLearners[0]['1'] = LearnerSubmissions[0].submission.score/ AssignmentGroup.assignments[0].points_possible
-  // idsLearners[0]['2'] = LearnerSubmissions[1].submission.score/AssignmentGroup.assignments[1].points_possible
-  // idsLearners[0]['3'] = LearnerSubmissions[2].submission.score/AssignmentGroup.assignments[2].points_possible
-  // idsLearners[1]['1'] = LearnerSubmissions[3].submission.score/AssignmentGroup.assignments[0].points_possible
-  // idsLearners[1]['2'] = LearnerSubmissions[4].submission.score/AssignmentGroup.assignments[1].points_possible
-
-
-  // console.log(idsLearners)
-
-  // for (let i = 0; i < LearnerSubmissions.length; i++){
-  //             submission[i]
-  //   const assignment_id = submission.assignment_id;
-
-
-  //   let assignment=0;
-
-  //   for (let j = i; j < AssignmentGroup.length; j++){
-  //    if(AssignmentGroup[j].id === assignment_id ){
-
-  //     assignment += AssignmentGroup[j];
-  //     break;
-
-  //    }
-
-  //   }
-
-  // }
-
-  // console.log(assignment)
-
-  // avg (add assignment scores together )/ (points possible)
-  // let pointsPossible=0;
-  // let totalScore=0;
-
-  // for (i = 0; i < AssignmentGroup.length; i++){
-
-  // pointsPossible+= AssignmentGroup.assignments[i].points_possible 
-
-  // }
-  // for (j = 0; j < LearnerSubmissions.length; j++){
-  // totalScore+=LearnerSubmissions[i].submission.score 
-  // }
-
-  // if ( pointsPossible > 0 ){
-  // console.log (totalScore/pointsPossible)
-
-  // }else {
-  //    console.log(`${pointsPossible} is zero and we can not calculate average`)
-  // }
-
-  // let pointPoss= AssignmentGroup.assignments[0].points_possible + AssignmentGroup.assignments[1].points_possible
-  // let asScore = LearnerSubmissions[0].submission.score + LearnerSubmissions[1].submission.score
-  // console.log(asScore/pointPoss)
-
-
-
-
-  // const assignmentId =[];
-  // for(let i = 0; i <LearnerSubmissions.length; i++){
-  //          assignmentId.push(LearnerSubmissions[i].assignment_id)
-  // }
-
-
-  // function getLearnerData(course, ag, submissions) {
+  
 
 
     //     // here, we would process this data to achieve the desired result.
@@ -247,6 +165,4 @@ console.log(learners)
     //     return result;
   }
 
-// const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
-
-//   console.log(result);
+const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
