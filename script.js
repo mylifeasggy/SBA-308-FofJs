@@ -81,7 +81,7 @@ const LearnerSubmissions = [
 
 function getLearnerData(course, ag, submissions) {
 
- const result = [];
+ 
  const learners = {};
 
 
