@@ -81,17 +81,15 @@ const LearnerSubmissions = [
 
 function getLearnerData(course, ag, submissions) {
 
-  const learners = {};
-  const result =[];
-
-
+ const result = [];
+ const learners = {};
 
 
   if (ag.course_id !== course.id) {
     throw new Error("AssignmentGroup's course_id does not match the CourseInfo.id.")
   }
-
   for (let i = 0; i < submissions.length; i++) {
+
 
     const submission = submissions[i];
     const learner_id = submission.learner_id;
@@ -102,7 +100,7 @@ function getLearnerData(course, ag, submissions) {
 
     let assignment = null;
     for (let j = 0; j < ag.assignments.length; j++) {
-      if (ag.assignments[j].id == assignment_id) {
+      if (ag.assignments[j].id === assignment_id) {
         assignment = ag.assignments[j]; // this is the asignment we're loking for.
         break;  // when i found the assigment i want, I break my loop for assigments, i found the assigment i needed
       }
@@ -112,31 +110,36 @@ function getLearnerData(course, ag, submissions) {
     learners[learner_id] = {
       id: learner_id,
       avg: 0,
-
+      assignments: {},
+      score:0,
+      points:0,
     }
     };
 
 
-    let learner = learners[learner_id];
-    const pointsPossible = assignment.points_possible;
-    let score = sub.score;// varibable for score
-  
+    const learner = learners[learner_id];
 
+    try {
+      const pointsPossible = assignment.points_possible; 
+      if (pointsPossible === 0) throw new Error("Points possible cannot be zero."); {
+        let score = sub.score;// varibable for score
 
-    if (new Date(sub.submitted_at) > new Date(assignment.due_at)) {
+        if (new Date(sub.submitted_at) > new Date(assignment.due_at)) {
 
-      score = score * 0.90;
+          score = score * 0.90;
+        }
+
+        const percentage = score / pointsPossible;
+        learner.assignments[assignment_id] = percentage;
+        learner.points += pointsPossible
+        learner.score += score
+        learner.avg = learner.score / learner.points
+
+      }
+    } catch (error) {
+      console.error("Error processing submission:", error)
     }
 
-    const percentage = score / pointsPossible;
-    learner[assignment_id] = percentage;
-   
-    score = score;
-    let points = pointsPossible;
-    learner.avg = score/points
-     
-
-   
   }
   console.log(learners);
 
