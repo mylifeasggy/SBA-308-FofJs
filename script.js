@@ -88,6 +88,7 @@ function getLearnerData(course, ag, submissions) {
   if (ag.course_id !== course.id) {
     throw new Error("AssignmentGroup's course_id does not match the CourseInfo.id.")
   }
+
   for (let i = 0; i < submissions.length; i++) {
 
 
@@ -99,12 +100,13 @@ function getLearnerData(course, ag, submissions) {
 
 
     let assignment = null;
-    for (let j = 0; j < ag.assignments.length; j++) {
+    let j = 0; 
+    while (j < ag.assignments.length) {
       if (ag.assignments[j].id === assignment_id) {
         assignment = ag.assignments[j]; // this is the asignment we're loking for.
         break;  // when i found the assigment i want, I break my loop for assigments, i found the assigment i needed
       }
-
+          j++
     }
      if(!learners[learner_id]){
     learners[learner_id] = {
